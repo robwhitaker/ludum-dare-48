@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/items/boomerang.png" type="Texture" id=1]
 [ext_resource path="res://scripts/items/Boomerang.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/sfx/boomerang_wall.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.60607
@@ -45,4 +46,8 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Flying = SubResource( 2 )
+
+[node name="HitWall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 200.0
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

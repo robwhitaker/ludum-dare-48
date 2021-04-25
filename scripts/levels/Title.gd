@@ -7,4 +7,5 @@ func _ready() -> void:
 
 func _input(event : InputEvent) -> void:
     if event.is_action_pressed("ui_accept"):
+        State.start_jukebox()
         get_tree().change_scene("res://scenes/levels/Level_01.tscn")

@@ -12,6 +12,9 @@ onready var animation_state = animation_tree.get("parameters/playback")
 onready var hurt_blink := $HurtBlink as AnimationPlayer
 onready var hint := $Hint as Label
 onready var hint_timer := $HintTimer as Timer
+onready var catch_noise := $BoomerangCatch as AudioStreamPlayer
+onready var hurt_noise := $Hurt as AudioStreamPlayer
+onready var heal_noise := $Heal as AudioStreamPlayer
 
 enum {
     MOVE,
@@ -86,10 +89,13 @@ func _unhandled_input(event : InputEvent) -> void:
 
 func _on_Boomerang_returned():
     can_spawn_boomerang = true
+    catch_noise.play()
 
 func _on_Hurtbox_area_entered(_area : Area2D) -> void:
     if !recovering:
         var new_hp : int = State.player_hp - 1
+        hurt_noise.play()
+        yield(get_tree().create_timer(0.5), "timeout")
         Event.emit_signal("player_hp_changed", State.player_hp, new_hp)
         State.player_hp = new_hp
         if new_hp <= 0:
@@ -111,6 +117,7 @@ func show_hint(text : String, duration : float) -> void:
     hint_timer.start(duration)
 
 func _on_Bandaid_picked_up() -> void:
+    heal_noise.play()
     var new_hp : int = State.player_hp + 1
     Event.emit_signal("player_hp_changed", State.player_hp, new_hp)
     State.player_hp = new_hp

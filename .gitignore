@@ -4,3 +4,5 @@ export_presets.cfg
 
 *.kra~
 *.png~
+
+asset_projects/audio/**/export

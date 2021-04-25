@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/items/box.png" type="Texture" id=1]
 [ext_resource path="res://scripts/items/Box.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/sfx/box_break.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
@@ -33,4 +34,8 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, -3 )
 shape = SubResource( 2 )
+
+[node name="Break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 300.0
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

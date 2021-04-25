@@ -48,6 +48,7 @@ func _game_win() -> void:
     can_continue = true
 
 func _go_to_title():
+    State.stop_jukebox()
     get_tree().paused = false
     State.player_hp = 3
     get_tree().change_scene("res://scenes/Title.tscn")

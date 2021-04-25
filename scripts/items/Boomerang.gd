@@ -9,12 +9,15 @@ export var return_acceleration : float = 800
 var player : KinematicBody2D
 
 onready var animation_player := $AnimationPlayer as AnimationPlayer
+onready var hit_wall_noise := $HitWall as AudioStreamPlayer2D
 
 var move_direction := Vector2.RIGHT
 var velocity := Vector2.ZERO
 var elapsed_distance : float = 0
 
 var returning := false
+
+var last_wall_hit = null
 
 func _ready():
     animation_player.play("Flying")
@@ -35,10 +38,14 @@ func _physics_process(delta : float) -> void:
         velocity = velocity.clamped(max_speed)
     velocity = move_and_slide(velocity)
     for i in get_slide_count():
-        if get_slide_collision(i).collider.is_in_group("Tilemap"):
+        var collider = get_slide_collision(i).collider
+        if collider.is_in_group("Tilemap"):
             returning = true
             move_direction = get_position().direction_to(player_position)
             velocity = move_direction * max_speed
+            if collider != last_wall_hit:
+                hit_wall_noise.play()
+            last_wall_hit = collider
             break
 
 

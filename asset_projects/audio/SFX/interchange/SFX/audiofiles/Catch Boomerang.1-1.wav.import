@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Catch Boomerang.1-1.wav-a1e5a5536127bd5a0144a39c9cf126fd.sample"
+
+[deps]
+
+source_file="res://asset_projects/audio/SFX/interchange/SFX/audiofiles/Catch Boomerang.1-1.wav"
+dest_files=[ "res://.import/Catch Boomerang.1-1.wav-a1e5a5536127bd5a0144a39c9cf126fd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

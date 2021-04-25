@@ -57,7 +57,6 @@ spawn_on_break = true
 scene_to_spawn = ExtResource( 7 )
 hint_on_break = true
 hint_text = "Ahh! A centipede!"
-hint_duration = 3.0
 
 [node name="Box2" parent="World/Props/YSort/Objects" instance=ExtResource( 5 )]
 position = Vector2( 24, 96 )

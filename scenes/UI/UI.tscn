@@ -19,19 +19,19 @@ expand_margin_bottom = 1.0
 size = 12
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 0.313726 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 content_margin_top = 2.0
 content_margin_bottom = 2.0
 bg_color = Color( 0, 0, 0, 0.717647 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 42
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 10
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -96,20 +96,20 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="GameOver"]
 margin_right = 480.0
 margin_bottom = 270.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="YouDied" type="PanelContainer" parent="GameOver"]
 margin_top = 133.0
 margin_right = 480.0
 margin_bottom = 137.0
 size_flags_vertical = 6
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="Label" type="Label" parent="GameOver/YouDied"]
 margin_top = 2.0
 margin_right = 480.0
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.458824, 0, 0, 1 )
 text = "You Died"
 align = 1
@@ -129,7 +129,7 @@ margin_top = 58.0
 margin_right = 480.0
 margin_bottom = 81.0
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Okay, not really. But you did get enough bug 
 bites to go running back to your mom crying."
 align = 1
@@ -171,7 +171,7 @@ custom_styles/panel = SubResource( 9 )
 margin_top = 2.0
 margin_right = 480.0
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "You Win!"
 align = 1
@@ -190,7 +190,7 @@ margin_top = 64.0
 margin_right = 480.0
 margin_bottom = 100.0
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "So, funny story. Your power cable wasn't actually in
 the basement at all! Your mom forgot she actually hid it 
 under your bed."

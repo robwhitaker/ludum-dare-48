@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bug_splat.wav-b624e8cca5c3f18e8b9fda826a0f01cf.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/bug_splat.wav"
+dest_files=[ "res://.import/bug_splat.wav-b624e8cca5c3f18e8b9fda826a0f01cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

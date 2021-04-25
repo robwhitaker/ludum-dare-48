@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boomerang_wall.wav-189aea357aa9bf0269224af91af90448.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/boomerang_wall.wav"
+dest_files=[ "res://.import/boomerang_wall.wav-189aea357aa9bf0269224af91af90448.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

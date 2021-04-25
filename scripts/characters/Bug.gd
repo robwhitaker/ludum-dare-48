@@ -6,6 +6,8 @@ export var speed : float = 150
 
 onready var recovery_animation := $RecoveryBlink as AnimationPlayer
 onready var sprite := $Sprite as Sprite
+onready var death_noise := $DeathSound as AudioStreamPlayer2D
+onready var hurt_noise := $Hurt as AudioStreamPlayer2D
 
 onready var player := get_node("/root/Game/").find_node("Player") as KinematicBody2D
 
@@ -39,8 +41,12 @@ func _on_HitHurtBox_area_shape_entered(_x, _y, _z, _p) -> void:
     if !recovering:
         hp -= 1
         if hp <= 0:
+            set_physics_process(false)
+            death_noise.play()
+            yield(get_tree().create_timer(0.5), "timeout")
             queue_free()
         else:
+            hurt_noise.play()
             recovering = true
             call_deferred("_set_collision_disabled", true)
             recovery_animation.play("recovery_blink")
