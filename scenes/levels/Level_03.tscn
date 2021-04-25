@@ -1,23 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://resources/tilesets/FloorAndWalls.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/items/Bandaid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/UI/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/items/Box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/triggers/Teleporter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/tilesets/FloorAndWalls.tres" type="TileSet" id=4]
+[ext_resource path="res://scenes/UI/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/characters/Centipede.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/levels/Level_01.gd" type="Script" id=8]
+[ext_resource path="res://scenes/triggers/Teleporter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/items/Box.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Node"]
 
 [node name="World" type="Node2D" parent="."]
-script = ExtResource( 8 )
 
 [node name="GroundAndWalls" type="TileMap" parent="World" groups=[
 "Tilemap",
 ]]
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 collision_mask = 0
@@ -27,7 +24,7 @@ tile_data = PoolIntArray( -131072, 2, 0, -131071, 2, 0, -131070, 2, 0, -131069, 
 [node name="WallEdges" type="TileMap" parent="World" groups=[
 "Tilemap",
 ]]
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 8, 8 )
 cell_y_sort = true
 collision_mask = 0
@@ -37,49 +34,59 @@ tile_data = PoolIntArray( -458753, 4, 0, -524252, 9, 0, -393217, 8, 0, -458716, 
 [node name="Props" type="TileMap" parent="World" groups=[
 "Tilemap",
 ]]
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 cell_tile_origin = 2
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 65539, 10, 0, 131077, 10, 0, 196609, 10, 0 )
+tile_data = PoolIntArray( 65538, 10, 0, 65542, 10, 0, 196610, 10, 0, 196614, 10, 0 )
 
 [node name="YSort" type="YSort" parent="World/Props"]
 
-[node name="Player" parent="World/Props/YSort" instance=ExtResource( 2 )]
-position = Vector2( 144, 138.144 )
+[node name="Player" parent="World/Props/YSort" instance=ExtResource( 10 )]
+position = Vector2( 144.417, 93 )
 
 [node name="Objects" type="YSort" parent="World/Props/YSort"]
 
-[node name="Box" parent="World/Props/YSort/Objects" instance=ExtResource( 5 )]
-position = Vector2( 248, 40 )
+[node name="BoxCentipede" parent="World/Props/YSort/Objects" instance=ExtResource( 9 )]
+position = Vector2( 144, 24 )
 spawn_on_break = true
 scene_to_spawn = ExtResource( 7 )
-hint_on_break = true
-hint_text = "Ahh! A centipede!"
-hint_duration = 3.0
 
-[node name="Box2" parent="World/Props/YSort/Objects" instance=ExtResource( 5 )]
-position = Vector2( 24, 96 )
+[node name="BoxCentipede2" parent="World/Props/YSort/Objects" instance=ExtResource( 9 )]
+position = Vector2( 144.834, 160 )
 spawn_on_break = true
-scene_to_spawn = ExtResource( 3 )
-hint_on_break = true
-hint_text = "Oh, a bandaid! Good for covering bug bites."
-hint_duration = 5.0
+scene_to_spawn = ExtResource( 7 )
 
-[node name="Box3" parent="World/Props/YSort/Objects" instance=ExtResource( 5 )]
-position = Vector2( 96, 8 )
-hint_on_break = true
-hint_text = "Aww, this one's empty..."
+[node name="BoxCentipede3" parent="World/Props/YSort/Objects" instance=ExtResource( 9 )]
+position = Vector2( 256, 96 )
+spawn_on_break = true
+scene_to_spawn = ExtResource( 7 )
+
+[node name="BoxCentipede4" parent="World/Props/YSort/Objects" instance=ExtResource( 9 )]
+position = Vector2( 32, 93 )
+spawn_on_break = true
+scene_to_spawn = ExtResource( 7 )
 
 [node name="Enemies" type="YSort" parent="World/Props/YSort"]
 
+[node name="Centipede" parent="World/Props/YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 32, 24 )
+
+[node name="Centipede2" parent="World/Props/YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 256, 24 )
+
+[node name="Centipede3" parent="World/Props/YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 32, 160 )
+
 [node name="Triggers" type="YSort" parent="World/Props/YSort"]
 
-[node name="Teleporter" parent="World/Props/YSort/Triggers" instance=ExtResource( 6 )]
+[node name="Teleporter" parent="World/Props/YSort/Triggers" instance=ExtResource( 8 )]
 position = Vector2( 272, 160 )
-next_level = 2
+next_level = 4
 
 [node name="Items" type="YSort" parent="World/Props/YSort"]
 
-[node name="UI" parent="." instance=ExtResource( 4 )]
+[node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="Node" type="Node" parent="."]

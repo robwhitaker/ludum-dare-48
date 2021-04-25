@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/Gamepixies-8MO6n.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/levels/Title.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.435294, 0.447059, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 31
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 15
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "StartBlink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanelContainer/Panel/Continue:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Title" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+margin_right = 480.0
+margin_bottom = 270.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Title" type="Label" parent="PanelContainer/Panel"]
+margin_left = 64.0
+margin_top = 48.0
+margin_right = 228.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 3 )
+text = "Boomerang 
+Basement 
+Brawl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="PanelContainer/Panel"]
+margin_left = 64.0
+margin_top = 152.0
+margin_right = 209.0
+margin_bottom = 166.0
+custom_fonts/font = SubResource( 4 )
+text = "the search for the cable"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="PanelContainer/Panel"]
+margin_left = 280.0
+margin_top = 8.0
+margin_right = 472.0
+margin_bottom = 245.0
+custom_fonts/font = SubResource( 5 )
+text = "You are Timmy.
+
+Your mom took your PC's power
+cable until you completed your
+homework.
+
+Now you've done your homework 
+so you can play games!
+
+Except your mom forgot if she put
+your cable in the basement, or the
+sub-basement... or the sub-sub-
+basement. Or the... Well, you get it.
+
+WASD to move. LMB to throw 
+your boomerang."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Label" parent="PanelContainer/Panel"]
+margin_left = 64.0
+margin_top = 208.0
+margin_right = 212.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 6 )
+text = "Press ENTER to start."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/StartBlink = SubResource( 7 )

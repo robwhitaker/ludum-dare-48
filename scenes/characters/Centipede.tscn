@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/images/characters/centipede.png" type="Texture" id=1]
+[ext_resource path="res://scenes/characters/Bug.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 4.25058
+height = 28.2686
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.1475, 3.34968 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 14.1475, 3.34968 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Centipede" type="YSort"]
+
+[node name="Bug" parent="." instance=ExtResource( 2 )]
+hp = 2
+speed = 50.0
+
+[node name="Sprite" parent="Bug" index="0"]
+position = Vector2( -0.134605, -14 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 3
+
+[node name="CollisionShape2D" parent="Bug" index="1"]
+position = Vector2( -0.629509, -1.89067 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" parent="Bug/Hurtbox" index="0"]
+position = Vector2( -0.494904, 1.91376 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="Bug/Hitbox" index="0"]
+position = Vector2( -0.494904, 1.91376 )
+shape = SubResource( 3 )
+
+[node name="EnemyAversionBox" parent="Bug" index="4"]
+visible = true
+
+[node name="Walk" type="AnimationPlayer" parent="Bug"]
+anims/Walk = SubResource( 1 )
+
+[editable path="Bug"]
