@@ -95,7 +95,8 @@ func _on_Hurtbox_area_entered(_area : Area2D) -> void:
     if !recovering:
         var new_hp : int = State.player_hp - 1
         hurt_noise.play()
-        yield(get_tree().create_timer(0.5), "timeout")
+        if new_hp <= 0:
+            yield(get_tree().create_timer(0.5), "timeout")
         Event.emit_signal("player_hp_changed", State.player_hp, new_hp)
         State.player_hp = new_hp
         if new_hp <= 0:
